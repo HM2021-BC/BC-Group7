@@ -9,21 +9,30 @@ pragma solidity ^0.5.0;
  */
 
 contract Tamacoinchi {
-    // min stake value in ETH
-    uint256 public stake;
-
-    // maxmimum amount of players inside one room
-    uint256 public roomSize;
+    struct Pet {
+        address manager;
+        string managerName;
+        string petName;
+        string gender;
+        uint256 level;
+        uint256 life;
+        uint256 affection;
+    }
 
     // a mapping list of gamer addresses, to check if address is current participant in the game or not
     // - if PlayerInfo doesnt work -> mapping(address=>bool) public players;
-    mapping(PlayerInfo => bool) public players;
+    mapping(Pet => bool) public owners;
 
     // current number of players inside the room
     // when anyone joins a room, the number will increase, and decrease whenever they leave
-    uint256 public numberOfPlayers;
+    uint256 public numberOfPets;
 
     modifier ownerOnly() {
+        require(players[msg.sender]);
+        _;
+    }
+
+    modifier nonOwnerOnly() {
         require(players[msg.sender]);
         _;
     }
@@ -37,4 +46,10 @@ contract Tamacoinchi {
         stake = _stake;
         roomSize = _roomSize;
     }
+
+    function feed() public payable ownerOnly {}
+
+    function pet() public payable {}
+
+    function revive() public payable nonOwnerOnly {}
 }

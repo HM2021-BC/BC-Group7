@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="84px" viewBox="0 0 88 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>mascot original shine copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="sketchbook" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-4" transform="translate(-6.000000, -10.000000)">
+            <g id="mascot-original-shine-copy">
+                <circle id="3d" stroke="#1F1F1F" stroke-width="2" fill="#FFD76B" cx="47.5" cy="51.5" r="40.5"></circle>
+                <circle id="outer-oval" stroke="#1F1F1F" stroke-width="2" fill="#FFD76B" cx="52.5" cy="52.5" r="40.5"></circle>
+                <path d="M53,83 C69.5685425,83 83,69.5685425 83,53 C83,44.8026835 79.7122564,37.3732607 74.3834696,31.9584318 C72.3303211,29.8721318 69.974177,28.084901 67.3863454,26.6680472 C66.3601315,26.1061887 65.2974836,25.6025739 64.2028485,25.1616493 C60.7415325,23.7674136 56.9603858,23 53,23 C36.4314575,23 23,36.4314575 23,53 C23,69.5685425 36.4314575,83 53,83 Z" id="inner-oval" stroke="#323232" stroke-width="2" fill="#FBCA46"></path>
+                <path d="M75.8853635,36.1085778 C61.2399554,36.1085778 49.3675063,47.9810268 49.3675063,62.6264349 C49.3675063,77.271843 61.2399554,89.1442921 75.8853635,89.1442921" id="inner-shadow" stroke-opacity="0.865029502" stroke="#F8B500" stroke-width="4" stroke-linecap="round" transform="translate(62.626435, 62.626435) scale(-1, -1) rotate(45.000000) translate(-62.626435, -62.626435) "></path>
+                <path d="M76.6234374,58.0609374 C76.6234374,37.5573661 60.0020088,20.9359374 39.4984374,20.9359374 C18.9948661,20.9359374 2.37343745,37.5573661 2.37343745,58.0609374" id="outer-shadow" stroke-opacity="0.709437274" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" transform="translate(39.498437, 39.498437) scale(-1, 1) rotate(45.000000) translate(-39.498437, -39.498437) "></path>
+                <ellipse id="right-cheek" fill-opacity="0.539608829" fill="#E05951" transform="translate(70.000000, 54.000000) rotate(-5.000000) translate(-70.000000, -54.000000) " cx="70" cy="54" rx="5" ry="2"></ellipse>
+                <ellipse id="left-cheek" fill-opacity="0.539608829" fill="#E05951" transform="translate(36.000000, 54.000000) rotate(5.000000) translate(-36.000000, -54.000000) " cx="36" cy="54" rx="5" ry="2"></ellipse>
+                <path d="M53.4765125,56.9768168 C57.2508639,56.9768168 62.9029141,61.1359404 61.046074,62.8189867 C60.1118173,63.6658002 56.7905405,60.9668873 53.4765125,60.9768168 C50.2038922,60.9866223 46.938578,63.7162443 45.9486684,62.8189867 C43.956324,61.0131189 49.7021611,56.9768168 53.4765125,56.9768168 Z" id="mouth" fill="#000000" transform="translate(53.475428, 59.988408) scale(1, -1) translate(-53.475428, -59.988408) "></path>
+                <g id="eyes" transform="translate(37.000000, 41.000000)">
+                    <circle id="Oval" fill="#000000" cx="28" cy="5" r="5"></circle>
+                    <circle id="Oval-Copy-21" fill="#000000" cx="5" cy="5" r="5"></circle>
+                    <circle id="Oval" fill="#FFFFFF" cx="29" cy="4" r="2"></circle>
+                    <circle id="Oval-Copy-19" fill="#FFFFFF" cx="6" cy="4" r="2"></circle>
+                </g>
+                <path d="M23.8792404,90.7522486 L71.3921701,25.3563112 C72.1654001,25.9998641 72.9142855,26.6716688 73.6372414,27.3701405 L26.4860012,92.2682551 C25.5968157,91.7945883 24.7273772,91.2887346 23.8792404,90.7522486 Z M8.84836389,73.7534537 L50.5795079,16.3154616 C56.3031318,17.0316453 61.6555006,18.9422137 66.3792524,21.7898048 L18.9438992,87.0789673 C14.7193411,83.4070353 11.2630906,78.8741264 8.84836088,73.7534538 Z" id="Combined-Shape" fill-opacity="0.205310315" fill="#FFFFFF"></path>
+                <circle id="outer-oval-copy-2" stroke="#1F1F1F" stroke-width="2" cx="52.5" cy="52.5" r="40.5"></circle>
+                <path d="M47.5,11 C25.1324676,11 7,29.1324676 7,51.5 C7,70.7016797 20.3628534,86.7822978 38.2963698,90.9496637" id="Shape" stroke="#1F1F1F" stroke-width="2"></path>
+                <path d="M53,83 C69.5685425,83 83,69.5685425 83,53 C83,44.8026835 79.7122564,37.3732607 74.3834696,31.9584318 C72.3303211,29.8721318 69.974177,28.084901 67.3863454,26.6680472 C66.3601315,26.1061887 65.2974836,25.6025739 64.2028485,25.1616493 C60.7415325,23.7674136 56.9603858,23 53,23 C36.4314575,23 23,36.4314575 23,53 C23,69.5685425 36.4314575,83 53,83 Z" id="inner-oval-copy-2" stroke="#2D2D2D" stroke-width="2"></path>
+            </g>
+        </g>
+    </g>
+</svg>

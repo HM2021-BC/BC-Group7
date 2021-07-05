@@ -4,17 +4,17 @@ import { Button, Icon, Label } from "semantic-ui-react";
 import styles from "./styles/Header.module.css";
 
 export default function Header() {
-  const leaveGame = () => { };
+  const createPet = () => {};
 
   return (
     <div className={styles.header}>
-      <Label as="a" image>
+      <Label as="a" image size="medium">
         <img src="https://react.semantic-ui.com/images/avatar/small/joe.jpg" />
-        Tamacoinchi by Group 7 🎲
+        Tamacoinchi by Group 7 🐶
       </Label>
-      <Button icon color="red" labelPosition="left" onClick={leaveGame}>
-        <Icon name="close" />
-        Leave Game
+      <Button icon color="green" labelPosition="left" onClick={createPet}>
+        <Icon name="plus" />
+        Get Pet
       </Button>
     </div>
   );
