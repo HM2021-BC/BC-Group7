@@ -17,9 +17,9 @@ before(async () => {
 	campaign = await CrowdCollab.at(campaignAddress[0]);
 }); */
 
-contract("DiceGame test", (accounts) => {
+contract("Tamaoinchi test", (accounts) => {
 	it('room has an address', async () => {
-    	assert.ok(campaignAddress);
+		assert.ok(campaignAddress);
 	});
 });
 

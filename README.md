@@ -1,6 +1,8 @@
-# Dice Game
+# Tamacoinchi
 
-DiceGame is a smart contract that allows users to participate in dice gambling without having to fear centralized authorities. Every transaction is written on the Ethereum blockchain, cutting out any kind of middle man.
+Tamacoinchi is a smart contract that allows users to raise their own virtual cute pet. Every transaction is written on the Ethereum blockchain. Feed, pet and raise your pet. But be careful: if you're pet starves to death, you have to ask a friend to revive it!
+
+Enjoy!
 
 ## Technologies
 
@@ -15,7 +17,7 @@ DiceGame is a smart contract that allows users to participate in dice gambling w
 
 ## Installation / Usage
 
-DiceGame is using the same technologies as our sample projects in the blockchain course, therefore the usage is the same.
+Tamacoinchi is using the same technologies as our sample projects in the blockchain course, therefore the usage is the same.
 
 1. Change truffle.js constants to your own values (e.g. private key)
 2. migrate to private network with `migrate all --network private_poa`

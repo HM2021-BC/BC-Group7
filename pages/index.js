@@ -1,8 +1,9 @@
 /**
- * @title Dice gambling smart contract, demonstration of how a possible decentralized gambling/betting game experience could look like
+ * @title Tamacoinchi smart contract, raising a virtual pet
  * @author Enis Tola
- * @dev DiceGame is a smart contract that allows users to participate in dice gambling without having to fear centralized
- * authorities. Every transaction is written on the Ethereum blockchain, cutting out any kind of middle man
+ * @dev Tamacoinchi is a smart contract that allows users to raise their own virtual cute pet. 
+ * Every transaction is written on the Ethereum blockchain. Feed, pet and raise your pet. 
+ * But be careful: if you're pet starves to death, you have to ask a friend to revive it!
  * -> This part is the next.js web app on top of said smart contract
  */
 

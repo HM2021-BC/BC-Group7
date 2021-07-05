@@ -1,5 +1,5 @@
-var RoomCreator = artifacts.require("./RoomCreator");
+var RoomCreator = artifacts.require("./PetCreator");
 
-module.exports = function(deployer) {
-  deployer.deploy(RoomCreator);
+module.exports = function (deployer) {
+  deployer.deploy(PetCreator);
 }; 
