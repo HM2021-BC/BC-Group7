@@ -58,6 +58,7 @@ export default function PetList() {
     },
   ];
 
+  const feed = () => {};
   const revive = () => {};
 
   const checkLifeStatus = (pet) => {
@@ -81,22 +82,42 @@ export default function PetList() {
               <Card.Content>
                 <Card.Header>{pet.name}</Card.Header>
                 <Card.Meta>
-                  <span className="date">Owned by {pet.owner}</span>
+                  <span className="date">
+                    Owned by <b>{pet.owner}</b>
+                  </span>
                 </Card.Meta>
-                <Progress percent={50} value={Life} indicating />
-                <Button
-                  icon
-                  color={checkLifeStatus(pet) ? "red" : "green"}
-                  labelPosition="left"
-                  className={styles.button}
-                  onClick={revive}
-                  disabled={!checkLifeStatus(pet)}
-                >
-                  <Icon name="flask" />
-                  {checkLifeStatus(pet)
-                    ? `${pet.name} is dead. Revive ${pet.name}`
-                    : `${pet.name} is living well 🐶`}
-                </Button>
+              </Card.Content>
+              <Card.Content>
+                <Card.Description>
+                  <b>Life points:</b>
+                </Card.Description>
+                <Progress percent={50} indicating className={styles.progress} />
+                {true ? (
+                  <Button
+                    icon
+                    color="green"
+                    labelPosition="left"
+                    className={styles.button}
+                    onClick={feed}
+                  >
+                    <Icon name="cube" />
+                    {`Feed ${pet.name} cubes`}
+                  </Button>
+                ) : (
+                  <Button
+                    icon
+                    color={checkLifeStatus(pet) ? "red" : "yellow"}
+                    labelPosition="left"
+                    className={styles.button}
+                    onClick={revive}
+                    disabled={!checkLifeStatus(pet)}
+                  >
+                    <Icon name="flask" />
+                    {checkLifeStatus(pet)
+                      ? `${pet.name} is dead. Revive ${pet.name}`
+                      : `${pet.name} is living well 🐶`}
+                  </Button>
+                )}
               </Card.Content>
             </Card>
           </div>

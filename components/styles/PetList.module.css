@@ -10,7 +10,11 @@
   flex-basis: 100%;
 }
 
+.progress {
+  margin: 10px 0 !important;
+}
+
 .button {
   width: 100%;
-  margin-top: 20px !important;
+  margin-top: 0px !important;
 }
