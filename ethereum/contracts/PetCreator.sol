@@ -5,25 +5,42 @@ pragma solidity ^0.5.0;
  * @author Enis Tola
  */
 
-contract RoomCreator {
+import "./Tamacoinchi.sol";
+
+contract PetCreator {
     // list of rooms
-    address[] public rooms;
+    address[] public pets;
 
     /**
-     * @dev Create new room and set necessary values
-     * @param stake the stake every player has to bet on each game turn (in ETH)
-     * @param roomSize maximum amount of players allowed into one room
+     * @dev Create new pet and set necessary values
+     * @param _name name of the pet
+     * @param _isMale gender of the pet
+     * @param _lastTimeFed the last time the pet got fed. important to determine life levels after time!
      */
-    function createRoom(uint256 stake, uint256 roomSize) public {
-        address newRoom = address(new DiceGame(stake, roomSize));
+    function createPet(
+        string memory _name,
+        string memory ownerName,
+        bool _isMale,
+        uint256 _lastTimeFed
+    ) public {
+        address newPet =
+            address(
+                new Tamacoinchi(
+                    msg.sender,
+                    ownerName,
+                    _name,
+                    _isMale,
+                    _lastTimeFed
+                )
+            );
 
-        rooms.push(newRoom);
+        pets.push(newPet);
     }
 
     /**
-     * @dev get all deployed Rooms
+     * @dev get all deployed Pets
      */
-    function getDeployedRooms() public view returns (address[] memory) {
-        return rooms;
+    function getDeployedPets() public view returns (address[] memory) {
+        return pets;
     }
 }

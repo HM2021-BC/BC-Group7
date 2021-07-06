@@ -1,7 +1,7 @@
 import React from "react";
 
-import "./MyPet.css";
+import styles from "./styles/MyPet.module.css";
 
 export default function MyPet() {
-  return <div></div>;
+  return <div className={styles.mypet}></div>;
 }

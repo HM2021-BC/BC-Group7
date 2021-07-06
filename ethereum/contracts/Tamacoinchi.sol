@@ -3,53 +3,72 @@ pragma solidity ^0.5.0;
 /**
  * @title Tamacoinchi smart contract, displaying how raising a virtual pet on the blockchain could look like
  * @author Enis Tola
- * @dev Tamacoinchi is a smart contract that allows users to raise their own virtual cute pet.
- * Every transaction is written on the Ethereum blockchain. Feed, pet and raise your pet.
+ * @dev Tamacoinchi is a smart contract that allows users to raise their own cute virtual pet.
+ * Every transaction is written on the Ethereum blockchain. Feed, pet and raise your new best friend.
  * But be careful: if you're pet starves to death, you have to ask a friend to revive it!
  */
 
 contract Tamacoinchi {
-    struct Pet {
-        address manager;
-        string managerName;
-        string petName;
-        string gender;
-        uint256 level;
-        uint256 life;
-        uint256 affection;
-    }
+    // Creator of the Tamacoinchi
+    address public owner;
+    string ownerName;
 
-    // a mapping list of gamer addresses, to check if address is current participant in the game or not
-    // - if PlayerInfo doesnt work -> mapping(address=>bool) public players;
-    mapping(Pet => bool) public owners;
+    // Pets name, gender, lastTimeFed, affection
+    string name;
+    bool isMale;
+    uint256 lastTimeFed;
+    uint256 affection;
 
-    // current number of players inside the room
-    // when anyone joins a room, the number will increase, and decrease whenever they leave
+    // a mapping list of pet owner addresses
+    // Necessary to prevent owners from getting multiple pets after one dies
+    mapping(address => bool) public owners;
+
+    // current number of pets
     uint256 public numberOfPets;
 
     modifier ownerOnly() {
-        require(players[msg.sender]);
+        require(owners[msg.sender]);
         _;
     }
 
     modifier nonOwnerOnly() {
-        require(players[msg.sender]);
+        require(owners[msg.sender]);
         _;
     }
 
-    /**
-     * @dev init campaign
-     * @param _stake the stake each player has to bet in each round, set for a room (in ETH)
-     * @param _roomSize the maximum amount of players allowed into one game room
-     */
-    constructor(uint256 _stake, uint256 _roomSize) public {
-        stake = _stake;
-        roomSize = _roomSize;
+    constructor(
+        address _owner,
+        string memory _ownerName,
+        string memory _name,
+        bool _isMale,
+        uint256 _lastTimeFed
+    ) public {
+        owner = _owner;
+        ownerName = _ownerName;
+        name = _name;
+        isMale = _isMale;
+        lastTimeFed = _lastTimeFed;
+        affection = 50;
     }
 
-    function feed() public payable ownerOnly {}
+    function feed(uint256 currentTime) public payable ownerOnly {
+        // Check whether the amount payed is more than you can feed your pet for a day
+        // 0.5 eth fill "life" value to 100%
+        uint256 food = msg.value * (48 * 3600 * 1000);
 
-    function pet() public payable {}
+        // increasing lastTimeFed by amount payed
+        if (food < (24 * 3600 * 1000)) {
+            lastTimeFed = lastTimeFed + msg.value * (4.8 * 3600 * 1000);
+        } else {
+            lastTimeFed = currentTime;
+        }
+    }
 
-    function revive() public payable nonOwnerOnly {}
+    function revive(uint256 currentTime) public payable nonOwnerOnly {
+        // Check if pet is actually dead and if the fee for revival has been payed!
+        // Reset lastTimeFed to currentTime
+        require(currentTime > lastTimeFed + (24 * 3600 * 1000));
+        require(msg.value > 2500000000000000000);
+        lastTimeFed = currentTime;
+    }
 }

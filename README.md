@@ -1,6 +1,6 @@
 # Tamacoinchi
 
-Tamacoinchi is a smart contract that allows users to raise their own virtual cute pet. Every transaction is written on the Ethereum blockchain. Feed, pet and raise your pet. But be careful: if you're pet starves to death, you have to ask a friend to revive it!
+Tamacoinchi is a smart contract that allows users to raise their own virtual cute pet. Every transaction is written on the Ethereum blockchain. Feed, pet and raise your new best friend. But be careful: if you're pet starves to death, you have to ask a friend to revive it!
 
 Enjoy!
 

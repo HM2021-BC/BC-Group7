@@ -5,6 +5,7 @@ import styles from "./styles/Header.module.css";
 
 export default function Header() {
   const createPet = () => {};
+  const login = () => {};
 
   return (
     <div className={styles.header}>
@@ -12,10 +13,16 @@ export default function Header() {
         <img src="https://react.semantic-ui.com/images/avatar/small/joe.jpg" />
         Tamacoinchi by Group 7 🐶
       </Label>
-      <Button icon color="green" labelPosition="left" onClick={createPet}>
-        <Icon name="plus" />
-        Get Pet
-      </Button>
+      <div className={styles.buttons}>
+        <Button icon color="green" labelPosition="left" onClick={createPet}>
+          <Icon name="plus" />
+          Create Pet
+        </Button>
+        <Button icon color="blue" labelPosition="left" onClick={login}>
+          <Icon name="user circle" />
+          Login
+        </Button>
+      </div>
     </div>
   );
 }

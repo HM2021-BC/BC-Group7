@@ -1,0 +1,1384 @@
+{
+  "contractName": "PetCreator",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "pets",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "ownerName",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "_isMale",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_lastTimeFed",
+          "type": "uint256"
+        }
+      ],
+      "name": "createPet",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getDeployedPets",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"ownerName\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"_isMale\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"_lastTimeFed\",\"type\":\"uint256\"}],\"name\":\"createPet\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getDeployedPets\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"pets\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"createPet(string,string,bool,uint256)\":{\"details\":\"Create new pet and set necessary values\",\"params\":{\"_isMale\":\"gender of the pet\",\"_lastTimeFed\":\"the last time the pet got fed. important to determine life levels after time!\",\"_name\":\"name of the pet\"}},\"getDeployedPets()\":{\"details\":\"get all deployed Pets\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/projects/BC-Group7/ethereum/contracts/PetCreator.sol\":\"PetCreator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/projects/BC-Group7/ethereum/contracts/PetCreator.sol\":{\"keccak256\":\"0x7db49e2b9da8acf29afd3d26a3459cf849127f1b23ae167488ecd4d8668d3fe1\",\"urls\":[\"bzz-raw://aa99c4428eedf0899b0830e830bfa0365ec73ffbc0672f1dd6a80d88c3d94f36\",\"dweb:/ipfs/QmagWiQvbD5ofaSdCKKSahg7mgt4Xor2NE4EZUUMCP5fh3\"]},\"/projects/BC-Group7/ethereum/contracts/Tamacoinchi.sol\":{\"keccak256\":\"0x39c4e16c6cbdb17ea88ddf7195957722f6e3ca5fcc4cd704cb01aa8d1cc9a23f\",\"urls\":[\"bzz-raw://b84e5e09cd7bb075fbf3239007ae3e4f3e413ccaadb228c81b87bb720fb6d07b\",\"dweb:/ipfs/QmXHUUQgKUYAxYMuWiECDmC38CoMXCZW3KjzgmRYB4Ju2N\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061091f806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063bb51c9b114610046578063cfb869bf1461009e578063f5e39c17146100d7575b600080fd5b61004e61020d565b60408051602080825283518183015283519192839290830191858101910280838360005b8381101561008a578181015183820152602001610072565b505050509050019250505060405180910390f35b6100bb600480360360208110156100b457600080fd5b503561026f565b604080516001600160a01b039092168252519081900360200190f35b61020b600480360360808110156100ed57600080fd5b81019060208101813564010000000081111561010857600080fd5b82018360208201111561011a57600080fd5b8035906020019184600183028401116401000000008311171561013c57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929594936020810193503591505064010000000081111561018f57600080fd5b8201836020820111156101a157600080fd5b803590602001918460018302840111640100000000831117156101c357600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955050505080351515915060200135610296565b005b6060600080548060200260200160405190810160405280929190818152602001828054801561026557602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311610247575b5050505050905090565b6000818154811061027c57fe5b6000918252602090912001546001600160a01b0316905081565b600033848685856040516102a99061040d565b6001600160a01b038616815282151560608201526080810182905260a060208083018281528751928401929092528651604084019160c08501919089019080838360005b838110156103055781810151838201526020016102ed565b50505050905090810190601f1680156103325780820380516001836020036101000a031916815260200191505b50838103825286518152865160209182019188019080838360005b8381101561036557818101518382015260200161034d565b50505050905090810190601f1680156103925780820380516001836020036101000a031916815260200191505b50975050505050505050604051809103906000f0801580156103b8573d6000803e3d6000fd5b50600080546001810182559080527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b0319166001600160a01b03929092169190911790555050505050565b6104d08061041b8339019056fe608060405234801561001057600080fd5b506040516104d03803806104d0833981810160405260a081101561003357600080fd5b81516020830180516040519294929383019291908464010000000082111561005a57600080fd5b90830190602082018581111561006f57600080fd5b825164010000000081118282018810171561008957600080fd5b82525081516020918201929091019080838360005b838110156100b657818101518382015260200161009e565b50505050905090810190601f1680156100e35780820380516001836020036101000a031916815260200191505b506040526020018051604051939291908464010000000082111561010657600080fd5b90830190602082018581111561011b57600080fd5b825164010000000081118282018810171561013557600080fd5b82525081516020918201929091019080838360005b8381101561016257818101518382015260200161014a565b50505050905090810190601f16801561018f5780820380516001836020036101000a031916815260200191505b5060409081526020828101519290910151600080546001600160a01b0319166001600160a01b038a16179055865192945092506101d191600191870190610208565b5082516101e5906002906020860190610208565b506003805460ff19169215159290921790915560045550506032600555506102a3565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061024957805160ff1916838001178555610276565b82800160010185558215610276579182015b8281111561027657825182559160200191906001019061025b565b50610282929150610286565b5090565b6102a091905b80821115610282576000815560010161028c565b90565b61021e806102b26000396000f3fe60806040526004361061004a5760003560e01c8063022914a71461004f578063705115d1146100965780638baecc21146100bd5780638da5cb5b146100dc578063f59dfdfb1461010d575b600080fd5b34801561005b57600080fd5b506100826004803603602081101561007257600080fd5b50356001600160a01b031661012a565b604080519115158252519081900360200190f35b3480156100a257600080fd5b506100ab61013f565b60408051918252519081900360200190f35b6100da600480360360208110156100d357600080fd5b5035610145565b005b3480156100e857600080fd5b506100f161018e565b604080516001600160a01b039092168252519081900360200190f35b6100da6004803603602081101561012357600080fd5b503561019d565b60066020526000908152604090205460ff1681565b60075481565b3360009081526006602052604090205460ff1661016157600080fd5b6004546305265c0001811161017557600080fd5b6722b1c8c1227a0000341161018957600080fd5b600455565b6000546001600160a01b031681565b3360009081526006602052604090205460ff166101b957600080fd5b630a4cb80034026305265c008110156101df5760048054630107ac0034020190556101e5565b60048290555b505056fea265627a7a723158202a1f30259d910410942c130c214de987d96a0cc2720fb1a3742767758a1025f964736f6c63430005100032a265627a7a72315820f5bc8b2d69f4192a70dd2d66bfa775308cb69bdb8eb634863553155cff395e6e64736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c8063bb51c9b114610046578063cfb869bf1461009e578063f5e39c17146100d7575b600080fd5b61004e61020d565b60408051602080825283518183015283519192839290830191858101910280838360005b8381101561008a578181015183820152602001610072565b505050509050019250505060405180910390f35b6100bb600480360360208110156100b457600080fd5b503561026f565b604080516001600160a01b039092168252519081900360200190f35b61020b600480360360808110156100ed57600080fd5b81019060208101813564010000000081111561010857600080fd5b82018360208201111561011a57600080fd5b8035906020019184600183028401116401000000008311171561013c57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929594936020810193503591505064010000000081111561018f57600080fd5b8201836020820111156101a157600080fd5b803590602001918460018302840111640100000000831117156101c357600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955050505080351515915060200135610296565b005b6060600080548060200260200160405190810160405280929190818152602001828054801561026557602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311610247575b5050505050905090565b6000818154811061027c57fe5b6000918252602090912001546001600160a01b0316905081565b600033848685856040516102a99061040d565b6001600160a01b038616815282151560608201526080810182905260a060208083018281528751928401929092528651604084019160c08501919089019080838360005b838110156103055781810151838201526020016102ed565b50505050905090810190601f1680156103325780820380516001836020036101000a031916815260200191505b50838103825286518152865160209182019188019080838360005b8381101561036557818101518382015260200161034d565b50505050905090810190601f1680156103925780820380516001836020036101000a031916815260200191505b50975050505050505050604051809103906000f0801580156103b8573d6000803e3d6000fd5b50600080546001810182559080527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b0319166001600160a01b03929092169190911790555050505050565b6104d08061041b8339019056fe608060405234801561001057600080fd5b506040516104d03803806104d0833981810160405260a081101561003357600080fd5b81516020830180516040519294929383019291908464010000000082111561005a57600080fd5b90830190602082018581111561006f57600080fd5b825164010000000081118282018810171561008957600080fd5b82525081516020918201929091019080838360005b838110156100b657818101518382015260200161009e565b50505050905090810190601f1680156100e35780820380516001836020036101000a031916815260200191505b506040526020018051604051939291908464010000000082111561010657600080fd5b90830190602082018581111561011b57600080fd5b825164010000000081118282018810171561013557600080fd5b82525081516020918201929091019080838360005b8381101561016257818101518382015260200161014a565b50505050905090810190601f16801561018f5780820380516001836020036101000a031916815260200191505b5060409081526020828101519290910151600080546001600160a01b0319166001600160a01b038a16179055865192945092506101d191600191870190610208565b5082516101e5906002906020860190610208565b506003805460ff19169215159290921790915560045550506032600555506102a3565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061024957805160ff1916838001178555610276565b82800160010185558215610276579182015b8281111561027657825182559160200191906001019061025b565b50610282929150610286565b5090565b6102a091905b80821115610282576000815560010161028c565b90565b61021e806102b26000396000f3fe60806040526004361061004a5760003560e01c8063022914a71461004f578063705115d1146100965780638baecc21146100bd5780638da5cb5b146100dc578063f59dfdfb1461010d575b600080fd5b34801561005b57600080fd5b506100826004803603602081101561007257600080fd5b50356001600160a01b031661012a565b604080519115158252519081900360200190f35b3480156100a257600080fd5b506100ab61013f565b60408051918252519081900360200190f35b6100da600480360360208110156100d357600080fd5b5035610145565b005b3480156100e857600080fd5b506100f161018e565b604080516001600160a01b039092168252519081900360200190f35b6100da6004803603602081101561012357600080fd5b503561019d565b60066020526000908152604090205460ff1681565b60075481565b3360009081526006602052604090205460ff1661016157600080fd5b6004546305265c0001811161017557600080fd5b6722b1c8c1227a0000341161018957600080fd5b600455565b6000546001600160a01b031681565b3360009081526006602052604090205460ff166101b957600080fd5b630a4cb80034026305265c008110156101df5760048054630107ac0034020190556101e5565b60048290555b505056fea265627a7a723158202a1f30259d910410942c130c214de987d96a0cc2720fb1a3742767758a1025f964736f6c63430005100032a265627a7a72315820f5bc8b2d69f4192a70dd2d66bfa775308cb69bdb8eb634863553155cff395e6e64736f6c63430005100032",
+  "sourceMap": "143:921:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;143:921:0;;;;;;;",
+  "deployedSourceMap": "143:921:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;143:921:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;968:94;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;968:94:0;;;;;;;;;;;;;;;;;190:21;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;190:21:0;;:::i;:::-;;;;-1:-1:-1;;;;;190:21:0;;;;;;;;;;;;;;467:445;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;467:445:0;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;467:445:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;467:445:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;467:445:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;467:445:0;;;;;;;;-1:-1:-1;467:445:0;;-1:-1:-1;;21:11;5:28;;2:2;;;46:1;43;36:12;2:2;467:445:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;467:445:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;467:445:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;467:445:0;;-1:-1:-1;;;;467:445:0;;;;;-1:-1:-1;467:445:0;;;;:::i;:::-;;968:94;1016:16;1051:4;1044:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1044:11:0;;;;;;;;;;;;;;;;;;;;;;;968:94;:::o;190:21::-;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;190:21:0;;-1:-1:-1;190:21:0;:::o;467:445::-;623:14;714:10;746:9;777:5;804:7;833:12;677:186;;;;;:::i;:::-;-1:-1:-1;;;;;677:186:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;677:186:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;677:186:0;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;677:186:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;-1:-1;888:4:0;27:10:-1;;39:1;23:18;;45:23;;888:17:0;;;;;;;-1:-1:-1;;;;;;888:17:0;-1:-1:-1;;;;;888:17:0;;;;;;;;;;-1:-1:-1;;;;;467:445:0:o;143:921::-;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\n/**\n * @title Pet creator to create Tamacoinchi smart contract\n * @author Enis Tola\n */\n\nimport \"./Tamacoinchi.sol\";\n\ncontract PetCreator {\n    // list of rooms\n    address[] public pets;\n\n    /**\n     * @dev Create new pet and set necessary values\n     * @param _name name of the pet\n     * @param _isMale gender of the pet\n     * @param _lastTimeFed the last time the pet got fed. important to determine life levels after time!\n     */\n    function createPet(\n        string memory _name,\n        string memory ownerName,\n        bool _isMale,\n        uint256 _lastTimeFed\n    ) public {\n        address newPet =\n            address(\n                new Tamacoinchi(\n                    msg.sender,\n                    ownerName,\n                    _name,\n                    _isMale,\n                    _lastTimeFed\n                )\n            );\n\n        pets.push(newPet);\n    }\n\n    /**\n     * @dev get all deployed Pets\n     */\n    function getDeployedPets() public view returns (address[] memory) {\n        return pets;\n    }\n}\n",
+  "sourcePath": "/projects/BC-Group7/ethereum/contracts/PetCreator.sol",
+  "ast": {
+    "absolutePath": "/projects/BC-Group7/ethereum/contracts/PetCreator.sol",
+    "exportedSymbols": {
+      "PetCreator": [
+        47
+      ]
+    },
+    "id": 48,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "absolutePath": "/projects/BC-Group7/ethereum/contracts/Tamacoinchi.sol",
+        "file": "./Tamacoinchi.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 48,
+        "sourceUnit": 210,
+        "src": "114:27:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [
+          209
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 47,
+        "linearizedBaseContracts": [
+          47
+        ],
+        "name": "PetCreator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 5,
+            "name": "pets",
+            "nodeType": "VariableDeclaration",
+            "scope": 47,
+            "src": "190:21:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$dyn_storage",
+              "typeString": "address[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "190:7:0",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "id": 4,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "190:9:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                "typeString": "address[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 36,
+              "nodeType": "Block",
+              "src": "613:299:0",
+              "statements": [
+                {
+                  "assignments": [
+                    17
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 17,
+                      "name": "newPet",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 36,
+                      "src": "623:14:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 16,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "623:7:0",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 29,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 21,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 224,
+                              "src": "714:3:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 22,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "714:10:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 23,
+                            "name": "ownerName",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 9,
+                            "src": "746:9:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 24,
+                            "name": "_name",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 7,
+                            "src": "777:5:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 25,
+                            "name": "_isMale",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11,
+                            "src": "804:7:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 26,
+                            "name": "_lastTimeFed",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 13,
+                            "src": "833:12:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            },
+                            {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            },
+                            {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            },
+                            {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            },
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          ],
+                          "id": 20,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "NewExpression",
+                          "src": "677:15:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_bool_$_t_uint256_$returns$_t_contract$_Tamacoinchi_$209_$",
+                            "typeString": "function (address,string memory,string memory,bool,uint256) returns (contract Tamacoinchi)"
+                          },
+                          "typeName": {
+                            "contractScope": null,
+                            "id": 19,
+                            "name": "Tamacoinchi",
+                            "nodeType": "UserDefinedTypeName",
+                            "referencedDeclaration": 209,
+                            "src": "681:11:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_Tamacoinchi_$209",
+                              "typeString": "contract Tamacoinchi"
+                            }
+                          }
+                        },
+                        "id": 27,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "677:186:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Tamacoinchi_$209",
+                          "typeString": "contract Tamacoinchi"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_Tamacoinchi_$209",
+                          "typeString": "contract Tamacoinchi"
+                        }
+                      ],
+                      "id": 18,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "652:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_address_$",
+                        "typeString": "type(address)"
+                      },
+                      "typeName": "address"
+                    },
+                    "id": 28,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "652:225:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "623:254:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 33,
+                        "name": "newPet",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 17,
+                        "src": "898:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 30,
+                        "name": "pets",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5,
+                        "src": "888:4:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 32,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "888:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) returns (uint256)"
+                      }
+                    },
+                    "id": 34,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "888:17:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 35,
+                  "nodeType": "ExpressionStatement",
+                  "src": "888:17:0"
+                }
+              ]
+            },
+            "documentation": "@dev Create new pet and set necessary values\n@param _name name of the pet\n@param _isMale gender of the pet\n@param _lastTimeFed the last time the pet got fed. important to determine life levels after time!",
+            "id": 37,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createPet",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7,
+                  "name": "_name",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 37,
+                  "src": "495:19:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "495:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9,
+                  "name": "ownerName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 37,
+                  "src": "524:23:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 8,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "524:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11,
+                  "name": "_isMale",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 37,
+                  "src": "557:12:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 10,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "557:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 13,
+                  "name": "_lastTimeFed",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 37,
+                  "src": "579:20:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "579:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "485:120:0"
+            },
+            "returnParameters": {
+              "id": 15,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "613:0:0"
+            },
+            "scope": 47,
+            "src": "467:445:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 45,
+              "nodeType": "Block",
+              "src": "1034:28:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 43,
+                    "name": "pets",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 5,
+                    "src": "1051:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                      "typeString": "address[] storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 42,
+                  "id": 44,
+                  "nodeType": "Return",
+                  "src": "1044:11:0"
+                }
+              ]
+            },
+            "documentation": "@dev get all deployed Pets",
+            "id": 46,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getDeployedPets",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 38,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "992:2:0"
+            },
+            "returnParameters": {
+              "id": 42,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 41,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 46,
+                  "src": "1016:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 39,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1016:7:0",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 40,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1016:9:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1015:18:0"
+            },
+            "scope": 47,
+            "src": "968:94:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 48,
+        "src": "143:921:0"
+      }
+    ],
+    "src": "0:1065:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/projects/BC-Group7/ethereum/contracts/PetCreator.sol",
+      "exportedSymbols": {
+        "PetCreator": [
+          47
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 210,
+          "absolutePath": "/projects/BC-Group7/ethereum/contracts/Tamacoinchi.sol",
+          "file": "./Tamacoinchi.sol",
+          "scope": 48,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2,
+        "name": "ImportDirective",
+        "src": "114:27:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            209
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            47
+          ],
+          "name": "PetCreator",
+          "scope": 48
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "pets",
+              "scope": 47,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address[]",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "length": null,
+                  "type": "address[]"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "nonpayable",
+                      "type": "address"
+                    },
+                    "id": 3,
+                    "name": "ElementaryTypeName",
+                    "src": "190:7:0"
+                  }
+                ],
+                "id": 4,
+                "name": "ArrayTypeName",
+                "src": "190:9:0"
+              }
+            ],
+            "id": 5,
+            "name": "VariableDeclaration",
+            "src": "190:21:0"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Create new pet and set necessary values\n@param _name name of the pet\n@param _isMale gender of the pet\n@param _lastTimeFed the last time the pet got fed. important to determine life levels after time!",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "createPet",
+              "scope": 47,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_name",
+                      "scope": 37,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 6,
+                        "name": "ElementaryTypeName",
+                        "src": "495:6:0"
+                      }
+                    ],
+                    "id": 7,
+                    "name": "VariableDeclaration",
+                    "src": "495:19:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "ownerName",
+                      "scope": 37,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 8,
+                        "name": "ElementaryTypeName",
+                        "src": "524:6:0"
+                      }
+                    ],
+                    "id": 9,
+                    "name": "VariableDeclaration",
+                    "src": "524:23:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_isMale",
+                      "scope": 37,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 10,
+                        "name": "ElementaryTypeName",
+                        "src": "557:4:0"
+                      }
+                    ],
+                    "id": 11,
+                    "name": "VariableDeclaration",
+                    "src": "557:12:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_lastTimeFed",
+                      "scope": 37,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 12,
+                        "name": "ElementaryTypeName",
+                        "src": "579:7:0"
+                      }
+                    ],
+                    "id": 13,
+                    "name": "VariableDeclaration",
+                    "src": "579:20:0"
+                  }
+                ],
+                "id": 14,
+                "name": "ParameterList",
+                "src": "485:120:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 15,
+                "name": "ParameterList",
+                "src": "613:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        17
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "newPet",
+                          "scope": 36,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "address",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "stateMutability": "nonpayable",
+                              "type": "address"
+                            },
+                            "id": 16,
+                            "name": "ElementaryTypeName",
+                            "src": "623:7:0"
+                          }
+                        ],
+                        "id": 17,
+                        "name": "VariableDeclaration",
+                        "src": "623:14:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "address",
+                          "type_conversion": true
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_contract$_Tamacoinchi_$209",
+                                  "typeString": "contract Tamacoinchi"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "type": "type(address)",
+                              "value": "address"
+                            },
+                            "id": 18,
+                            "name": "ElementaryTypeNameExpression",
+                            "src": "652:7:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "contract Tamacoinchi",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_string_memory_ptr",
+                                      "typeString": "string memory"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_string_memory_ptr",
+                                      "typeString": "string memory"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "type": "function (address,string memory,string memory,bool,uint256) returns (contract Tamacoinchi)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "contractScope": null,
+                                      "name": "Tamacoinchi",
+                                      "referencedDeclaration": 209,
+                                      "type": "contract Tamacoinchi"
+                                    },
+                                    "id": 19,
+                                    "name": "UserDefinedTypeName",
+                                    "src": "681:11:0"
+                                  }
+                                ],
+                                "id": 20,
+                                "name": "NewExpression",
+                                "src": "677:15:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address payable"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 224,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 21,
+                                    "name": "Identifier",
+                                    "src": "714:3:0"
+                                  }
+                                ],
+                                "id": 22,
+                                "name": "MemberAccess",
+                                "src": "714:10:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 9,
+                                  "type": "string memory",
+                                  "value": "ownerName"
+                                },
+                                "id": 23,
+                                "name": "Identifier",
+                                "src": "746:9:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7,
+                                  "type": "string memory",
+                                  "value": "_name"
+                                },
+                                "id": 24,
+                                "name": "Identifier",
+                                "src": "777:5:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 11,
+                                  "type": "bool",
+                                  "value": "_isMale"
+                                },
+                                "id": 25,
+                                "name": "Identifier",
+                                "src": "804:7:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 13,
+                                  "type": "uint256",
+                                  "value": "_lastTimeFed"
+                                },
+                                "id": 26,
+                                "name": "Identifier",
+                                "src": "833:12:0"
+                              }
+                            ],
+                            "id": 27,
+                            "name": "FunctionCall",
+                            "src": "677:186:0"
+                          }
+                        ],
+                        "id": 28,
+                        "name": "FunctionCall",
+                        "src": "652:225:0"
+                      }
+                    ],
+                    "id": 29,
+                    "name": "VariableDeclarationStatement",
+                    "src": "623:254:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "uint256",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "push",
+                              "referencedDeclaration": null,
+                              "type": "function (address) returns (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 5,
+                                  "type": "address[] storage ref",
+                                  "value": "pets"
+                                },
+                                "id": 30,
+                                "name": "Identifier",
+                                "src": "888:4:0"
+                              }
+                            ],
+                            "id": 32,
+                            "name": "MemberAccess",
+                            "src": "888:9:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 17,
+                              "type": "address",
+                              "value": "newPet"
+                            },
+                            "id": 33,
+                            "name": "Identifier",
+                            "src": "898:6:0"
+                          }
+                        ],
+                        "id": 34,
+                        "name": "FunctionCall",
+                        "src": "888:17:0"
+                      }
+                    ],
+                    "id": 35,
+                    "name": "ExpressionStatement",
+                    "src": "888:17:0"
+                  }
+                ],
+                "id": 36,
+                "name": "Block",
+                "src": "613:299:0"
+              }
+            ],
+            "id": 37,
+            "name": "FunctionDefinition",
+            "src": "467:445:0"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev get all deployed Pets",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getDeployedPets",
+              "scope": 47,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 38,
+                "name": "ParameterList",
+                "src": "992:2:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 46,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "address[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "address[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "stateMutability": "nonpayable",
+                              "type": "address"
+                            },
+                            "id": 39,
+                            "name": "ElementaryTypeName",
+                            "src": "1016:7:0"
+                          }
+                        ],
+                        "id": 40,
+                        "name": "ArrayTypeName",
+                        "src": "1016:9:0"
+                      }
+                    ],
+                    "id": 41,
+                    "name": "VariableDeclaration",
+                    "src": "1016:16:0"
+                  }
+                ],
+                "id": 42,
+                "name": "ParameterList",
+                "src": "1015:18:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 42
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 5,
+                          "type": "address[] storage ref",
+                          "value": "pets"
+                        },
+                        "id": 43,
+                        "name": "Identifier",
+                        "src": "1051:4:0"
+                      }
+                    ],
+                    "id": 44,
+                    "name": "Return",
+                    "src": "1044:11:0"
+                  }
+                ],
+                "id": 45,
+                "name": "Block",
+                "src": "1034:28:0"
+              }
+            ],
+            "id": 46,
+            "name": "FunctionDefinition",
+            "src": "968:94:0"
+          }
+        ],
+        "id": 47,
+        "name": "ContractDefinition",
+        "src": "143:921:0"
+      }
+    ],
+    "id": 48,
+    "name": "SourceUnit",
+    "src": "0:1065:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.0",
+  "updatedAt": "2021-07-06T07:37:13.978Z",
+  "devdoc": {
+    "methods": {
+      "createPet(string,string,bool,uint256)": {
+        "details": "Create new pet and set necessary values",
+        "params": {
+          "_isMale": "gender of the pet",
+          "_lastTimeFed": "the last time the pet got fed. important to determine life levels after time!",
+          "_name": "name of the pet"
+        }
+      },
+      "getDeployedPets()": {
+        "details": "get all deployed Pets"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
