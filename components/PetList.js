@@ -91,7 +91,7 @@ export default function PetList() {
                 <Card.Description>
                   <b>Life points:</b>
                 </Card.Description>
-                <Progress percent={50} indicating className={styles.progress} />
+                <Progress percent={80} indicating className={styles.progress} />
                 {true ? (
                   <Button
                     icon

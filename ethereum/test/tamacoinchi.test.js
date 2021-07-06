@@ -73,15 +73,38 @@ contract("Tamacoinchi Test", (accounts) => {
 
   it("Owner can feed pet", async () => {
     const currentLastTimeFed = await pet.lastTimeFed.call();
-    const amount = "300000000000000000";
+    const amount = "10000000000000000";
     await pet.feed(new Date().getTime(), { from: accounts[0], value: amount });
     const newLastTimeFed = await pet.lastTimeFed.call();
 
-    assert.ok(newLastTimeFed > currentLastTimeFed);
+    console.log(currentLastTimeFed.toString(), newLastTimeFed.toString());
+
+    // 2*3600*1000 equals 2 hours - 0.01eth will increase life by 2hour
+    assert.equal(
+      newLastTimeFed.toString() - currentLastTimeFed.toString(),
+      2 * 3600 * 1000
+    );
+  });
+
+  it("Owner doesn't pay enough", async () => {
+    const currentLastTimeFed = await pet.lastTimeFed.call();
+    const amount = "5000000000000000";
+
+    try {
+      await pet.feed(new Date().getTime(), {
+        from: accounts[0],
+        value: amount,
+      });
+      const newLastTimeFed = await pet.lastTimeFed.call();
+      console.log(currentLastTimeFed.toString(), newLastTimeFed.toString());
+      assert.equal(newLastTimeFed.toString(), 0);
+    } catch (error) {
+      assert(error);
+    }
   });
 
   it("Other people can't feed my pet", async () => {
-    const amount = "300000000000000000";
+    const amount = "10000000000000000";
 
     try {
       await pet.feed(new Date().getTime(), {
@@ -102,9 +125,9 @@ contract("Tamacoinchi Test", (accounts) => {
     assert.ok(currentLastTimeFed.toString() < testTime.toString());
   });
 
-  it("Non-owner can revive pet and pays 2ETH to do so", async () => {
+  it("Non-owner can revive pet and pays 0.2ETH to do so", async () => {
     const currentLastTimeFed = await pet2.lastTimeFed.call();
-    const amount = "2000000000000000000";
+    const amount = "200000000000000000";
 
     try {
       await pet2.revive(new Date().getTime(), {
@@ -120,8 +143,8 @@ contract("Tamacoinchi Test", (accounts) => {
     assert.ok(newLastTimeFed > currentLastTimeFed);
   });
 
-  it("Non-owner wants to revive pet but doesn't pay 2ETH to do so", async () => {
-    const amount = "300000000000000000";
+  it("Non-owner wants to revive pet but doesn't pay 0.2ETH to do so", async () => {
+    const amount = "100000000000";
 
     try {
       await pet2.revive(new Date().getTime(), {
@@ -135,7 +158,7 @@ contract("Tamacoinchi Test", (accounts) => {
   });
 
   it("Owner cannot revive pet", async () => {
-    const amount = "3000000000000000000";
+    const amount = "2000000000000000000";
 
     try {
       await pet2.revive(new Date().getTime(), {
@@ -153,7 +176,7 @@ contract("Tamacoinchi Test", (accounts) => {
       accounts[9]
     );
 
-    const amount = "300000000000000000";
+    const amount = "20000000000000000";
     await pet.feed(new Date().getTime(), { from: accounts[0], value: amount });
 
     const creatorAccountBalanceAfterTransfer = await checkCreatorBalance(

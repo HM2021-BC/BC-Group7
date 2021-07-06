@@ -10,8 +10,9 @@ pragma solidity ^0.5.0;
 
 contract Tamacoinchi {
     // Recipient of all payable transactions -> creator of tamacoinchi
+    // Swap address with an address from the truffle develop output before running tests
     address payable creatorOfThisContract =
-        0xD0615397654C2C4834a85D879C0C91468bcE8f1b;
+        0x79906ec99Fe449dF7A06278F716e8a20408194DA;
 
     // Creator of the Tamacoinchi
     address public owner;
@@ -46,13 +47,16 @@ contract Tamacoinchi {
     }
 
     function feed(uint256 currentTime) public payable ownerOnly {
-        // 0.1 eth increases "life" by 10%
-
+        // 0.01 eth increases "life" by 10%
+        require(msg.value >= 10000000000000000);
         // increasing lastTimeFed by amount payed
-        if (msg.value > 1000000000000000000) {
+        // If user pays 0.05 ETH, pets life will increase to 100%
+        if (msg.value >= 50000000000000000) {
             lastTimeFed = currentTime;
         } else {
-            lastTimeFed = lastTimeFed + msg.value * 24 * 3600 * (1000 / 10);
+            // else the amount will increase by
+            uint256 buffer = (msg.value / 10000000000000000) * 2 * 3600 * 1000;
+            lastTimeFed = lastTimeFed + buffer;
         }
 
         creatorOfThisContract.transfer(msg.value);
@@ -62,7 +66,7 @@ contract Tamacoinchi {
         // Check if pet is actually dead and if the fee for revival has been payed!
         // Reset lastTimeFed to currentTime
         require(currentTime > (lastTimeFed + (24 * 3600 * 1000)));
-        require(msg.value >= 2000000000000000000);
+        require(msg.value >= 200000000000000000);
         lastTimeFed = currentTime;
 
         creatorOfThisContract.transfer(msg.value);
