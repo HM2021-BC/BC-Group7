@@ -13,13 +13,14 @@ contract PetCreator {
 
     /**
      * @dev Create new pet and set necessary values
+     * @param _ownerName name of pets owner
      * @param _name name of the pet
      * @param _isMale gender of the pet
      * @param _lastTimeFed the last time the pet got fed. important to determine life levels after time!
      */
     function createPet(
-        string memory _name,
         string memory ownerName,
+        string memory _name,
         bool _isMale,
         uint256 _lastTimeFed
     ) public {

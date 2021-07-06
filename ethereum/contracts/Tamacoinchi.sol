@@ -17,7 +17,6 @@ contract Tamacoinchi {
     string name;
     bool isMale;
     uint256 lastTimeFed;
-    uint256 affection;
 
     // a mapping list of pet owner addresses
     // Necessary to prevent owners from getting multiple pets after one dies
@@ -48,7 +47,6 @@ contract Tamacoinchi {
         name = _name;
         isMale = _isMale;
         lastTimeFed = _lastTimeFed;
-        affection = 50;
     }
 
     function feed(uint256 currentTime) public payable ownerOnly {
