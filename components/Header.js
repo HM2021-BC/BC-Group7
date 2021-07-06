@@ -18,10 +18,6 @@ export default function Header() {
           <Icon name="plus" />
           Create Pet
         </Button>
-        <Button icon color="blue" labelPosition="left" onClick={login}>
-          <Icon name="user circle" />
-          Login
-        </Button>
       </div>
     </div>
   );

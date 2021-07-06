@@ -4,6 +4,8 @@ Tamacoinchi is a smart contract that allows users to raise their own virtual cut
 
 Enjoy!
 
+![Coin image](https://lunchmoney.app/assets/images/shiny-no-shadow.svg)
+
 ## Technologies
 
 - Solidity

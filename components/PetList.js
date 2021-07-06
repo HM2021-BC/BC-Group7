@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Icon } from "semantic-ui-react";
+import { Card, Button, Icon, Progress } from "semantic-ui-react";
 
 import Tamacoinchi from "./Tamacoinchi";
 
@@ -67,26 +67,34 @@ export default function PetList() {
   return (
     <div className={styles.petList}>
       {petlist.map((pet) => {
-        console.log(pet.lastTimeFed, new Date().getTime());
         return (
           <div className={styles.petList} key={pet.name}>
             <Card className={styles.cardContainer}>
-              {!checkLifeStatus(pet) && <Tamacoinchi isMale={pet.isMale} />}
+              {!checkLifeStatus(pet) ? (
+                <Tamacoinchi isMale={pet.isMale} />
+              ) : (
+                <img
+                  src="https://image.freepik.com/free-vector/gravestone-with-flower-farewell-relative-fresh-grave-flat-vector-illustration_124715-48.jpg"
+                  style={{ height: "250px;" }}
+                />
+              )}
               <Card.Content>
                 <Card.Header>{pet.name}</Card.Header>
                 <Card.Meta>
                   <span className="date">Owned by {pet.owner}</span>
                 </Card.Meta>
+                <Progress percent={50} value={Life} indicating />
                 <Button
                   icon
-                  color={checkLifeStatus(pet) ? "orange" : "grey"}
+                  color={checkLifeStatus(pet) ? "red" : "green"}
                   labelPosition="left"
                   className={styles.button}
                   onClick={revive}
+                  disabled={!checkLifeStatus(pet)}
                 >
                   <Icon name="flask" />
                   {checkLifeStatus(pet)
-                    ? `Revive ${pet.name}`
+                    ? `${pet.name} is dead. Revive ${pet.name}`
                     : `${pet.name} is living well 🐶`}
                 </Button>
               </Card.Content>

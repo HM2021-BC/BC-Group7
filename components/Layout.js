@@ -9,7 +9,7 @@ export default function Layout() {
   return (
     <div className={styles.layout}>
       <div className={styles.innerLayout}>
-        <h2>See all Tamacoinchis</h2>
+        <h2>All Tamacoinchis</h2>
         <PetList />
       </div>
     </div>

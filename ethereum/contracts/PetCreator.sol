@@ -19,7 +19,7 @@ contract PetCreator {
      * @param _lastTimeFed the last time the pet got fed. important to determine life levels after time!
      */
     function createPet(
-        string memory ownerName,
+        string memory _ownerName,
         string memory _name,
         bool _isMale,
         uint256 _lastTimeFed
@@ -28,7 +28,7 @@ contract PetCreator {
             address(
                 new Tamacoinchi(
                     msg.sender,
-                    ownerName,
+                    _ownerName,
                     _name,
                     _isMale,
                     _lastTimeFed

@@ -9,29 +9,25 @@ pragma solidity ^0.5.0;
  */
 
 contract Tamacoinchi {
+    // Recipient of all payable transactions -> creator of tamacoinchi
+    address payable creatorOfThisContract =
+        0xD0615397654C2C4834a85D879C0C91468bcE8f1b;
+
     // Creator of the Tamacoinchi
     address public owner;
-    string ownerName;
+    string public ownerName;
 
     // Pets name, gender, lastTimeFed, affection
-    string name;
-    bool isMale;
-    uint256 lastTimeFed;
-
-    // a mapping list of pet owner addresses
-    // Necessary to prevent owners from getting multiple pets after one dies
-    mapping(address => bool) public owners;
-
-    // current number of pets
-    uint256 public numberOfPets;
+    string public name;
+    bool public isMale;
+    uint256 public lastTimeFed;
 
     modifier ownerOnly() {
-        require(owners[msg.sender]);
+        require(msg.sender == owner);
         _;
     }
-
     modifier nonOwnerOnly() {
-        require(owners[msg.sender]);
+        require(msg.sender != owner);
         _;
     }
 
@@ -50,23 +46,25 @@ contract Tamacoinchi {
     }
 
     function feed(uint256 currentTime) public payable ownerOnly {
-        // Check whether the amount payed is more than you can feed your pet for a day
-        // 0.5 eth fill "life" value to 100%
-        uint256 food = msg.value * (48 * 3600 * 1000);
+        // 0.1 eth increases "life" by 10%
 
         // increasing lastTimeFed by amount payed
-        if (food < (24 * 3600 * 1000)) {
-            lastTimeFed = lastTimeFed + msg.value * (4.8 * 3600 * 1000);
-        } else {
+        if (msg.value > 1000000000000000000) {
             lastTimeFed = currentTime;
+        } else {
+            lastTimeFed = lastTimeFed + msg.value * 24 * 3600 * (1000 / 10);
         }
+
+        creatorOfThisContract.transfer(msg.value);
     }
 
     function revive(uint256 currentTime) public payable nonOwnerOnly {
         // Check if pet is actually dead and if the fee for revival has been payed!
         // Reset lastTimeFed to currentTime
-        require(currentTime > lastTimeFed + (24 * 3600 * 1000));
-        require(msg.value > 2500000000000000000);
+        require(currentTime > (lastTimeFed + (24 * 3600 * 1000)));
+        require(msg.value >= 2000000000000000000);
         lastTimeFed = currentTime;
+
+        creatorOfThisContract.transfer(msg.value);
     }
 }
