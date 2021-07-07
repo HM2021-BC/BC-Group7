@@ -11,26 +11,27 @@ import {
 
 import Tamacoinchi from "./Tamacoinchi";
 
-function CreatePetModal({ open, setOpen, createPet, setErrorMessage }) {
+function CreatePetModal({ open, setOpen, createPet }) {
   const [isMale, setIsMale] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   const createPetFromForm = async (event) => {
     setIsLoading(true);
     try {
-      if ((!event.target[0].value, !event.target[1].value, !isMale))
+      console.log(event.target[0].value === "", event.target[1].value === "");
+      if (event.target[0].value === "" || event.target[1].value === "")
         throw new Error("incorrect inputs");
 
       await createPet(
         event.target[0].value,
         event.target[1].value,
         isMale,
-        new Date().getTime()
+        new Date().getTime() - 20 * 3600 * 1000
       );
       setOpen(false);
       setIsLoading(false);
     } catch (err) {
-      setErrorMessage(
+      alert(
         "An error occured when trying to create a pet. Please check your inputs!"
       );
       setIsLoading(false);

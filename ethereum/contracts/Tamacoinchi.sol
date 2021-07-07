@@ -55,14 +55,14 @@ contract Tamacoinchi {
 
     function feed(uint256 currentTime) public payable ownerOnly {
         // 0.01 eth increases "life" by 10%
-        require(msg.value >= 10000000000000000);
+        require(msg.value >= 1000000000000000);
         // increasing lastTimeFed by amount payed
         // If user pays 0.12 ETH, pets life will increase to 100%
-        if (msg.value >= 120000000000000000) {
+        if (msg.value >= 12000000000000000) {
             lastTimeFed = currentTime;
         } else {
             // else the amount will increase by 2h for every 0.01eth
-            uint256 buffer = (msg.value / 10000000000000000) * 2 * 3600 * 1000;
+            uint256 buffer = (msg.value / 1000000000000000) * 2 * 3600 * 1000;
             lastTimeFed = lastTimeFed + buffer;
         }
 
@@ -74,7 +74,7 @@ contract Tamacoinchi {
         // Check if pet is actually dead and if the fee for revival has been payed!
         // Reset lastTimeFed to currentTime
         require(currentTime > (lastTimeFed + (24 * 3600 * 1000)));
-        require(msg.value >= 200000000000000000);
+        require(msg.value >= 20000000000000000);
         lastTimeFed = currentTime;
 
         // Pay the creator of the conract, which is us (that's how we earn money)
@@ -89,12 +89,14 @@ contract Tamacoinchi {
         view
         returns (
             address,
+            address,
             string memory,
             string memory,
             bool,
             uint256
         )
     {
-        return (owner, ownerName, name, isMale, lastTimeFed);
+        address myAddress = address(this);
+        return (myAddress, owner, ownerName, name, isMale, lastTimeFed);
     }
 }

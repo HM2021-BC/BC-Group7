@@ -1,12 +1,10 @@
 import React from "react";
-import { Progress, Message } from "semantic-ui-react";
-
 import PetList from "./PetList";
 import MyPet from "./MyPet";
 
 import styles from "./styles/Layout.module.css";
 
-function Layout({ pets, myPet, setErrorMessage, createPet }) {
+function Layout({ pets, myPet, setErrorMessage, createPet, feed, revive }) {
   return (
     <div className={styles.layout}>
       <div className={styles.innerLayout}>
@@ -16,9 +14,10 @@ function Layout({ pets, myPet, setErrorMessage, createPet }) {
           myPet={myPet}
           setErrorMessage={setErrorMessage}
           createPet={createPet}
+          feed={feed}
         />
         <h2>All Tamacoinchis</h2>
-        <PetList pets={pets} />
+        <PetList pets={pets} revive={revive} />
       </div>
     </div>
   );

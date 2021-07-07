@@ -2,19 +2,12 @@ import React, { useEffect } from "react";
 import { Card, Button, Icon, Progress } from "semantic-ui-react";
 
 import Tamacoinchi from "./Tamacoinchi";
-import { useStateValue } from "../context/StateProvider";
 
 import styles from "./styles/PetList.module.css";
 
-function PetList({ pets }) {
-  useEffect(() => {
-    console.log(pets);
-  }, [pets]);
-
-  const revive = () => {};
-
-  const checkLifeStatus = (pet) => {
-    return new Date().getTime() > pet.lastTimeFed + 24 * 3600 * 1000;
+function PetList({ pets, revive }) {
+  const checkLifeStatus = (lastTimeFed) => {
+    return new Date().getTime() > lastTimeFed + 24 * 3600 * 1000;
   };
 
   const calculateLife = (lastTimeFed) => {
@@ -30,7 +23,7 @@ function PetList({ pets }) {
       {pets &&
         pets.map((pet) => {
           return (
-            <div className={styles.petList} key={pet.key}>
+            <div className={styles.petList} key={pet.address}>
               <Card className={styles.cardContainer}>
                 {!checkLifeStatus(pet) ? (
                   <Tamacoinchi isMale={pet.isMale} />
@@ -59,11 +52,11 @@ function PetList({ pets }) {
                   />
                   <Button
                     icon
-                    color={checkLifeStatus(pet) ? "red" : "yellow"}
+                    color={checkLifeStatus(pet.lastTimeFed) ? "red" : "yellow"}
                     labelPosition="left"
                     className={styles.button}
                     onClick={revive}
-                    disabled={!checkLifeStatus(pet)}
+                    disabled={false}
                   >
                     <Icon name="flask" />
                     {checkLifeStatus(pet)
