@@ -6,7 +6,7 @@ import MyPet from "./MyPet";
 
 import styles from "./styles/Layout.module.css";
 
-export default function Layout({ pets, myPet, setErrorMesage, createPet }) {
+function Layout({ pets, myPet, setErrorMessage, createPet }) {
   return (
     <div className={styles.layout}>
       <div className={styles.innerLayout}>
@@ -14,7 +14,7 @@ export default function Layout({ pets, myPet, setErrorMesage, createPet }) {
         <MyPet
           pets={pets}
           myPet={myPet}
-          setErrorMessage={setErrorMesage}
+          setErrorMessage={setErrorMessage}
           createPet={createPet}
         />
         <h2>All Tamacoinchis</h2>
@@ -23,3 +23,5 @@ export default function Layout({ pets, myPet, setErrorMesage, createPet }) {
     </div>
   );
 }
+
+export default Layout;

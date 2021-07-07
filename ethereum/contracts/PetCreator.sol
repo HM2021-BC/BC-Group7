@@ -36,7 +36,7 @@ contract PetCreator {
         uint256 _lastTimeFed
     ) public {
         // Disable check before running tests
-        checkIfSenderAlreadyHasAPet(msg.sender);
+        // checkIfSenderAlreadyHasAPet(msg.sender);
         address newPet =
             address(
                 new Tamacoinchi(

@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./styles/Tamacoinchi.module.css";
 
-export default function Tamacoinchi({ isMale }) {
+function Tamacoinchi({ isMale }) {
   const images = [
     "https://lunchmoney.app/assets/images/ruby-no-shadow.svg",
     "https://lunchmoney.app/assets/images/shiny-no-shadow.svg",
@@ -19,3 +19,5 @@ export default function Tamacoinchi({ isMale }) {
     </div>
   );
 }
+
+export default Tamacoinchi;

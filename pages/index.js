@@ -10,12 +10,18 @@
 import React, { Component } from "react";
 import App from "../components/App";
 
+import { StateProvider } from "../context/StateProvider";
+import reducer from "../context/StateProvider";
+import initialState from "../context/StateProvider";
+
 import "semantic-ui-css/semantic.min.css";
 
-export default function RoomIndex() {
+export default function TamacoinchiIndex() {
   return (
     <div>
-      <App />
+      <StateProvider initialState={initialState} reducer={reducer}>
+        <App />
+      </StateProvider>
     </div>
   );
 }

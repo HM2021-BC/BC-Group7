@@ -11,26 +11,16 @@ import {
 
 import Tamacoinchi from "./Tamacoinchi";
 
-// import styles from "./styles/CreatePetModal.module.css";
-
-const options = [
-  { key: "m", text: "Male", value: true },
-  { key: "f", text: "Female", value: false },
-];
-
-export default function CreatePetModal({
-  open,
-  setOpen,
-  createPet,
-  setErrorMessage,
-}) {
+function CreatePetModal({ open, setOpen, createPet, setErrorMessage }) {
   const [isMale, setIsMale] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const createPetFromForm = async (event) => {
-    console.log(isMale);
-    console.log(event.target[0].value);
-    console.log(event.target[1].value);
+    setIsLoading(true);
     try {
+      if ((!event.target[0].value, !event.target[1].value, !isMale))
+        throw new Error("incorrect inputs");
+
       await createPet(
         event.target[0].value,
         event.target[1].value,
@@ -38,10 +28,12 @@ export default function CreatePetModal({
         new Date().getTime()
       );
       setOpen(false);
+      setIsLoading(false);
     } catch (err) {
       setErrorMessage(
         "An error occured when trying to create a pet. Please check your inputs!"
       );
+      setIsLoading(false);
     }
   };
 
@@ -63,7 +55,7 @@ export default function CreatePetModal({
           <Tamacoinchi isMale={false} />
           <Modal.Description style={{ marginLeft: "80px" }}>
             <Header>Create your Tamacoinchi</Header>
-            <Form onSubmit={createPetFromForm}>
+            <Form onSubmit={createPetFromForm} loading={isLoading}>
               <Form.Field
                 control={Input}
                 label="Owners name"
@@ -90,3 +82,5 @@ export default function CreatePetModal({
     </div>
   );
 }
+
+export default CreatePetModal;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Message } from "semantic-ui-react";
 import factory from "../ethereum/factory";
 import Tamacoinchi from "../ethereum/tamacoinchi";
 import web3 from "../ethereum/web3";
@@ -7,12 +6,11 @@ import web3 from "../ethereum/web3";
 import Header from "./Header";
 import Layout from "./Layout";
 import LoginModal from "./LoginModal";
-
 import initialState from "../context/initialState";
 
 import styles from "./styles/App.module.css";
 
-export default function App() {
+function App() {
   const [pets, setPets] = useState([]);
   const [myPet, setMyPet] = useState(null);
   const [accounts, setAccounts] = useState(null);
@@ -27,35 +25,16 @@ export default function App() {
     if (errorMessage) alert("An error has occured: " + errorMessage);
   }, [errorMessage]);
 
-  const getInitialProps = (address) => {
-    const tamacoinchi = Tamacoinchi(address);
-
-    const allPets = await tamacoinchi.methods.getSummary().call();
-
-    console.log(allPets);
-
-    /*return {
-      address: props.query.address,
-      minimumContribution: summary[0],
-      balance: summary[1],
-      requestsCount: summary[2],
-      approversCount: summary[3],
-      manager: summary[4],
-    };*/
-  };
-
-  // getInitialProps();
-
-  const login = async () => {
+  const login = async (setIsLoading) => {
     try {
+      setIsLoading(true);
       const accounts = await web3.eth.requestAccounts().then(console.log());
       console.log(accounts[0]);
       setAccounts(accounts);
 
-      let allDeployedPets = await factory.methods.getDeployedPets().call();
-      console.log(allDeployedPets);
-
+      getAllPets();
       setLoggedIn(true);
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
       setErrorMessage(
@@ -74,12 +53,37 @@ export default function App() {
           from: accounts[0],
         });
 
-      let allDeployedPets = await factory.methods.getDeployedPets().call();
-      console.log(allDeployedPets);
-      console.log(allDeployedPets);
+      await getAllPets();
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const getAllPets = async () => {
+    let allDeployedPets = await factory.methods.getDeployedPets().call();
+
+    const allPets = await Promise.all(
+      allDeployedPets.map((element) => {
+        const tamacoinchi = Tamacoinchi(element);
+        return tamacoinchi.methods.getSummaryOfYourPet().call();
+      })
+    );
+
+    console.log(allPets);
+
+    const newPetList = allPets.map((item, index) => {
+      return {
+        key: index,
+        ownerAddress: item[0],
+        owner: item[1],
+        name: item[2],
+        isMale: item[3],
+        lastTimeFed: item[4],
+      };
+    });
+
+    console.log(newPetList);
+    setPets(newPetList);
   };
 
   return (
@@ -95,3 +99,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

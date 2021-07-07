@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Button, Icon, Label } from "semantic-ui-react";
+import { Label } from "semantic-ui-react";
 
 import styles from "./styles/Header.module.css";
 
-export default function Header({ myPet }) {
-
+function Header() {
   return (
     <div className={styles.header}>
       <Label as="a" image size="medium">
@@ -15,3 +14,5 @@ export default function Header({ myPet }) {
     </div>
   );
 }
+
+export default Header;

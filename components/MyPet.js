@@ -6,7 +6,7 @@ import CreatePetModal from "./CreatePetModal";
 
 import styles from "./styles/MyPet.module.css";
 
-export default function Layout({ myPet, createPet, setErrorMessage }) {
+function MyPet({ myPet, createPet, setErrorMessage }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -50,3 +50,5 @@ export default function Layout({ myPet, createPet, setErrorMessage }) {
     </div>
   );
 }
+
+export default MyPet;

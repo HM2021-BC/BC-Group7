@@ -2,14 +2,27 @@ import React, { useEffect } from "react";
 import { Card, Button, Icon, Progress } from "semantic-ui-react";
 
 import Tamacoinchi from "./Tamacoinchi";
+import { useStateValue } from "../context/StateProvider";
 
 import styles from "./styles/PetList.module.css";
 
-export default function PetList({ pets }) {
+function PetList({ pets }) {
+  useEffect(() => {
+    console.log(pets);
+  }, [pets]);
+
   const revive = () => {};
 
   const checkLifeStatus = (pet) => {
     return new Date().getTime() > pet.lastTimeFed + 24 * 3600 * 1000;
+  };
+
+  const calculateLife = (lastTimeFed) => {
+    const time = new Date().getTime();
+    const diff = time - lastTimeFed;
+    if (diff > 24 * 3600 * 1000) return 0;
+    const result = 100 - Math.round((diff / 3600 / 1000 / 24) * 100);
+    return result;
   };
 
   return (
@@ -17,7 +30,7 @@ export default function PetList({ pets }) {
       {pets &&
         pets.map((pet) => {
           return (
-            <div className={styles.petList} key={pet.name}>
+            <div className={styles.petList} key={pet.key}>
               <Card className={styles.cardContainer}>
                 {!checkLifeStatus(pet) ? (
                   <Tamacoinchi isMale={pet.isMale} />
@@ -40,7 +53,7 @@ export default function PetList({ pets }) {
                     <b>Life points:</b>
                   </Card.Description>
                   <Progress
-                    percent={80}
+                    percent={calculateLife(pet.lastTimeFed)}
                     indicating
                     className={styles.progress}
                   />
@@ -54,7 +67,7 @@ export default function PetList({ pets }) {
                   >
                     <Icon name="flask" />
                     {checkLifeStatus(pet)
-                      ? `${pet.name} is dead. Revive ${pet.name}`
+                      ? `${pet.name} is dead. Revive it`
                       : `${pet.name} is living well 🐶`}
                   </Button>
                 </Card.Content>
@@ -65,3 +78,5 @@ export default function PetList({ pets }) {
     </div>
   );
 }
+
+export default PetList;
