@@ -6,14 +6,19 @@ import MyPet from "./MyPet";
 
 import styles from "./styles/Layout.module.css";
 
-export default function Layout() {
+export default function Layout({ pets, myPet, setErrorMesage, createPet }) {
   return (
     <div className={styles.layout}>
       <div className={styles.innerLayout}>
         <h2>My Tamacoinchi</h2>
-        <MyPet />
+        <MyPet
+          pets={pets}
+          myPet={myPet}
+          setErrorMessage={setErrorMesage}
+          createPet={createPet}
+        />
         <h2>All Tamacoinchis</h2>
-        <PetList />
+        <PetList pets={pets} />
       </div>
     </div>
   );

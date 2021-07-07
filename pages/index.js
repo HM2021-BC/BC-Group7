@@ -12,16 +12,10 @@ import App from "../components/App";
 
 import "semantic-ui-css/semantic.min.css";
 
-import { StateProvider } from "../context/StateProvider";
-import reducer from "../context/reducer";
-import initialState from "../context/initialState";
-
 export default function RoomIndex() {
   return (
     <div>
-      <StateProvider initialState={initialState} reducer={reducer}>
-        <App />
-      </StateProvider>
+      <App />
     </div>
   );
 }

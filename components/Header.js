@@ -3,9 +3,7 @@ import { Button, Icon, Label } from "semantic-ui-react";
 
 import styles from "./styles/Header.module.css";
 
-export default function Header() {
-  const createPet = () => {};
-  const login = () => {};
+export default function Header({ myPet }) {
 
   return (
     <div className={styles.header}>
@@ -13,12 +11,7 @@ export default function Header() {
         <img src="https://react.semantic-ui.com/images/avatar/small/joe.jpg" />
         Tamacoinchi by Group 7 🐶
       </Label>
-      <div className={styles.buttons}>
-        <Button icon color="green" labelPosition="left" onClick={createPet}>
-          <Icon name="plus" />
-          Create Pet
-        </Button>
-      </div>
+      <h4>v0.1</h4>
     </div>
   );
 }
