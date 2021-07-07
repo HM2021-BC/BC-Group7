@@ -22,16 +22,11 @@ function App() {
     setPets(initialState.pets);
   }, []);
 
-  useEffect(() => {
-    if (errorMessage) alert("An error has occured: " + errorMessage);
-  }, [errorMessage]);
-
   const login = async (setIsLoading) => {
     try {
       setIsLoading(true);
       const accounts = await web3.eth.requestAccounts().then(console.log());
       const sessionAccount = await web3.eth.getAccounts();
-      console.log(sessionAccount);
       setCurrentAccount(sessionAccount);
       setAccounts(accounts);
 
@@ -67,8 +62,6 @@ function App() {
     try {
       allDeployedPets = await factory.methods.getDeployedPets().call();
 
-      console.log(allDeployedPets);
-
       allPets = await Promise.all(
         allDeployedPets.map((element) => {
           const tamacoinchi = Tamacoinchi(element);
@@ -89,7 +82,6 @@ function App() {
         lastTimeFed: item[5],
       };
     });
-    console.log(newPetList);
 
     const filteredPetList = [...newPetList];
     filteredPetList.filter((item) => item.ownerAddress != account);
@@ -97,7 +89,6 @@ function App() {
     setPets(filteredPetList);
 
     newPetList.map((item) => {
-      console.log(item);
       if (item.ownerAddress === account) {
         setMyPet(item);
       }
@@ -106,14 +97,13 @@ function App() {
 
   const feed = async () => {
     try {
-      console.log(myPet.address);
       const tamacoinchi = Tamacoinchi(myPet.address);
       const time = new Date().getTime();
-      alert("Please send 0.2ETH for reviving the Tamacoinchi!");
-      console.log("in");
-      await tamacoinchi.methods
-        .revive(time)
-        .send({ from: accounts[0], value: web3.utils.toWei("0.2", "ether") });
+      console.log(web3.utils.toWei("0.2", "ether"));
+      await tamacoinchi.methods.feed(time).send({
+        from: currentAccount[0],
+        value: web3.utils.toWei("0.1", "ether"),
+      });
       console.log("done");
       await getAllPets(currentAccount);
     } catch (err) {
@@ -121,16 +111,14 @@ function App() {
     }
   };
 
-  const revive = async () => {
+  const revive = async (address) => {
     try {
-      console.log(myPet.address);
-      const tamacoinchi = Tamacoinchi(myPet.address);
+      const tamacoinchi = Tamacoinchi(address);
       const time = new Date().getTime();
-      alert("Please only send 0.01ETH per transaction!");
-      console.log("in");
-      await tamacoinchi.methods
-        .feed(time)
-        .send({ from: accounts[0], value: web3.utils.toWei("0.001", "ether") });
+      await tamacoinchi.methods.revive(time).send({
+        from: currentAccount[0],
+        value: web3.utils.toWei("0.2", "ether"),
+      });
       console.log("done");
       await getAllPets(currentAccount);
     } catch (err) {

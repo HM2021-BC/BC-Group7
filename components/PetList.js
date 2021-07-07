@@ -55,7 +55,7 @@ function PetList({ pets, revive }) {
                     color={checkLifeStatus(pet.lastTimeFed) ? "red" : "yellow"}
                     labelPosition="left"
                     className={styles.button}
-                    onClick={revive}
+                    onClick={() => revive(pet.address)}
                     disabled={false}
                   >
                     <Icon name="flask" />

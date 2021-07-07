@@ -15,7 +15,7 @@ contract Tamacoinchi {
     // Recipient of all payable transactions -> creator of tamacoinchi
     // Swap address with an address from the truffle develop output before running tests
     address payable creatorOfThisContract =
-        0x79906ec99Fe449dF7A06278F716e8a20408194DA;
+        0x09dFd0640ca3b1a99C33743aba53f5c8F333519a;
 
     // Creator of the Tamacoinchi
     address public owner;
@@ -55,14 +55,14 @@ contract Tamacoinchi {
 
     function feed(uint256 currentTime) public payable ownerOnly {
         // 0.01 eth increases "life" by 10%
-        require(msg.value >= 1000000000000000);
+        require(msg.value >= 10000000000000000);
         // increasing lastTimeFed by amount payed
         // If user pays 0.12 ETH, pets life will increase to 100%
         if (msg.value >= 12000000000000000) {
             lastTimeFed = currentTime;
         } else {
             // else the amount will increase by 2h for every 0.01eth
-            uint256 buffer = (msg.value / 1000000000000000) * 2 * 3600 * 1000;
+            uint256 buffer = (msg.value / 10000000000000000) * 2 * 3600 * 1000;
             lastTimeFed = lastTimeFed + buffer;
         }
 
@@ -73,9 +73,10 @@ contract Tamacoinchi {
     function revive(uint256 currentTime) public payable nonOwnerOnly {
         // Check if pet is actually dead and if the fee for revival has been payed!
         // Reset lastTimeFed to currentTime
-        require(currentTime > (lastTimeFed + (24 * 3600 * 1000)));
-        require(msg.value >= 20000000000000000);
-        lastTimeFed = currentTime;
+        require(msg.value >= 200000000000000000);
+        if (currentTime > (lastTimeFed + (24 * 3600 * 1000))) {
+            lastTimeFed = currentTime;
+        }
 
         // Pay the creator of the conract, which is us (that's how we earn money)
         creatorOfThisContract.transfer(msg.value);

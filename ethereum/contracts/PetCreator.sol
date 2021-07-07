@@ -14,10 +14,7 @@ contract PetCreator {
     // a mapping list of owner address, to check if owner already has a pet
     mapping(address => bool) public owners;
 
-    function checkIfSenderAlreadyHasAPet(address tobeCheckedOwner)
-        public
-        payable
-    {
+    function checkIfSenderAlreadyHasAPet(address tobeCheckedOwner) public {
         require(!owners[tobeCheckedOwner]);
         owners[tobeCheckedOwner] = true;
     }
@@ -36,7 +33,7 @@ contract PetCreator {
         uint256 _lastTimeFed
     ) public {
         // Disable check before running tests
-        // checkIfSenderAlreadyHasAPet(msg.sender);
+        checkIfSenderAlreadyHasAPet(msg.sender);
         address newPet =
             address(
                 new Tamacoinchi(
