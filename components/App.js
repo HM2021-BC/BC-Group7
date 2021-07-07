@@ -102,7 +102,7 @@ function App() {
       console.log(web3.utils.toWei("0.2", "ether"));
       await tamacoinchi.methods.feed(time).send({
         from: currentAccount[0],
-        value: web3.utils.toWei("0.1", "ether"),
+        value: web3.utils.toWei("10000000000000000", "ether"),
       });
       console.log("done");
       await getAllPets(currentAccount);
@@ -117,7 +117,7 @@ function App() {
       const time = new Date().getTime();
       await tamacoinchi.methods.revive(time).send({
         from: currentAccount[0],
-        value: web3.utils.toWei("0.2", "ether"),
+        value: web3.utils.toWei("200000000000000000", "ether"),
       });
       console.log("done");
       await getAllPets(currentAccount);
