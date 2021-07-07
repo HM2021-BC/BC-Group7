@@ -12,16 +12,16 @@ import App from "../components/App";
 
 import "semantic-ui-css/semantic.min.css";
 
-export default function RoomIndex() {
-  /* static async getInitialProps() {
-      const campaigns = await factory.methods.getDeployedCampaigns().call();
-  
-      return { campaigns };
-    } */
+import { StateProvider } from "../context/StateProvider";
+import reducer from "../context/reducer";
+import initialState from "../context/initialState";
 
+export default function RoomIndex() {
   return (
     <div>
-      <App />
+      <StateProvider initialState={initialState} reducer={reducer}>
+        <App />
+      </StateProvider>
     </div>
   );
 }

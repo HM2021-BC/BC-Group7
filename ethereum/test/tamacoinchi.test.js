@@ -12,13 +12,12 @@ before(async () => {
   let name = "Staaaahl";
   let isMale = true;
   let lastTimeFed = new Date().getTime();
+  await petCreator.createPet(ownerName, name, isMale, lastTimeFed);
 
   let ownerName2 = "Albert";
   let name2 = "Hana";
   let isMale2 = false;
   let lastTimeFed2 = new Date().getTime() - 25 * 3600 * 1000;
-
-  await petCreator.createPet(ownerName, name, isMale, lastTimeFed);
   await petCreator.createPet(ownerName2, name2, isMale2, lastTimeFed2);
 
   petAddress = await petCreator.getDeployedPets.call();

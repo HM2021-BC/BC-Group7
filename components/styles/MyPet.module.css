@@ -1,0 +1,38 @@
+.mypet {
+  height: 300px;
+  width: calc(100% - 30px);
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 0.28571429rem;
+  border: 1px solid rgba(34, 36, 38, 0.1);
+}
+
+.mypet > * {
+  width: 40%;
+}
+
+.mypetInfo {
+  padding: 20px;
+  width: 60%;
+}
+.mypetInfo > h2 {
+  margin-bottom: 5px;
+}
+.mypetInfo > h3 {
+  margin: 0;
+}
+
+.description {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+  margin: 10px 0 20px;
+}
+
+.progress {
+  width: 200%;
+  margin: 5px 0 10px !important;
+}
+.button {
+  width: 100% !important;
+}

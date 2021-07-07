@@ -26,3 +26,10 @@ Tamacoinchi is using the same technologies as our sample projects in the blockch
 3. Start web app with `node server.js` and open the client through the morpheus Visual Studio CDE Services (same as in our lab documents)
 4. Login with MetaMask
 5. Play
+
+## Tests
+
+Before running the tests, you have to do the following two steps:
+
+1. Set the creatorOfThisContract variable in Tamacoinchi.sol to the last value in the truffle develop public addresses.
+2. Disable the checkIfSenderAlreadyHasAPet() function call in line 39 of the PetCreator.sol - otherwise most tests will fail.

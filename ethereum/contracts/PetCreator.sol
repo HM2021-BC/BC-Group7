@@ -8,8 +8,19 @@ pragma solidity ^0.5.0;
 import "./Tamacoinchi.sol";
 
 contract PetCreator {
-    // list of rooms
+    // list of pets
     address[] public pets;
+
+    // a mapping list of owner address, to check if owner already has a pet
+    mapping(address => bool) public owners;
+
+    function checkIfSenderAlreadyHasAPet(address tobeCheckedOwner)
+        public
+        payable
+    {
+        require(!owners[tobeCheckedOwner]);
+        owners[tobeCheckedOwner] = true;
+    }
 
     /**
      * @dev Create new pet and set necessary values
@@ -24,6 +35,8 @@ contract PetCreator {
         bool _isMale,
         uint256 _lastTimeFed
     ) public {
+        // Disable check before running tests
+        checkIfSenderAlreadyHasAPet(msg.sender);
         address newPet =
             address(
                 new Tamacoinchi(

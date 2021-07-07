@@ -6,6 +6,9 @@ pragma solidity ^0.5.0;
  * @dev Tamacoinchi is a smart contract that allows users to raise their own cute virtual pet.
  * Every transaction is written on the Ethereum blockchain. Feed, pet and raise your new best friend.
  * But be careful: if you're pet starves to death, you have to ask a friend to revive it!
+ *
+ * Tamacoinchi earns money by offering paid feed() and revive() methods user can use to keep their pets
+ * alive or revive them if they die! That's what creatorOfThisContract is used for
  */
 
 contract Tamacoinchi {
@@ -23,6 +26,9 @@ contract Tamacoinchi {
     bool public isMale;
     uint256 public lastTimeFed;
 
+    // a mapping list of owner address, to check if owner already has a pet
+    mapping(address => bool) public owners;
+
     modifier ownerOnly() {
         require(msg.sender == owner);
         _;
@@ -39,6 +45,7 @@ contract Tamacoinchi {
         bool _isMale,
         uint256 _lastTimeFed
     ) public {
+        owners[_owner] = true;
         owner = _owner;
         ownerName = _ownerName;
         name = _name;
@@ -50,15 +57,16 @@ contract Tamacoinchi {
         // 0.01 eth increases "life" by 10%
         require(msg.value >= 10000000000000000);
         // increasing lastTimeFed by amount payed
-        // If user pays 0.05 ETH, pets life will increase to 100%
-        if (msg.value >= 50000000000000000) {
+        // If user pays 0.12 ETH, pets life will increase to 100%
+        if (msg.value >= 120000000000000000) {
             lastTimeFed = currentTime;
         } else {
-            // else the amount will increase by
+            // else the amount will increase by 2h for every 0.01eth
             uint256 buffer = (msg.value / 10000000000000000) * 2 * 3600 * 1000;
             lastTimeFed = lastTimeFed + buffer;
         }
 
+        // Pay the creator of the conract, which is us (that's how we earn money)
         creatorOfThisContract.transfer(msg.value);
     }
 
@@ -69,6 +77,7 @@ contract Tamacoinchi {
         require(msg.value >= 200000000000000000);
         lastTimeFed = currentTime;
 
+        // Pay the creator of the conract, which is us (that's how we earn money)
         creatorOfThisContract.transfer(msg.value);
     }
 }
