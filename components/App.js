@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Message } from "semantic-ui-react";
 import factory from "../ethereum/factory";
+import Tamacoinchi from "../ethereum/tamacoinchi";
 import web3 from "../ethereum/web3";
 
 import Header from "./Header";
@@ -14,6 +15,7 @@ import styles from "./styles/App.module.css";
 export default function App() {
   const [pets, setPets] = useState([]);
   const [myPet, setMyPet] = useState(null);
+  const [accounts, setAccounts] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -25,13 +27,33 @@ export default function App() {
     if (errorMessage) alert("An error has occured: " + errorMessage);
   }, [errorMessage]);
 
+  const getInitialProps = (address) => {
+    const tamacoinchi = Tamacoinchi(address);
+
+    const allPets = await tamacoinchi.methods.getSummary().call();
+
+    console.log(allPets);
+
+    /*return {
+      address: props.query.address,
+      minimumContribution: summary[0],
+      balance: summary[1],
+      requestsCount: summary[2],
+      approversCount: summary[3],
+      manager: summary[4],
+    };*/
+  };
+
+  // getInitialProps();
+
   const login = async () => {
     try {
       const accounts = await web3.eth.requestAccounts().then(console.log());
       console.log(accounts[0]);
+      setAccounts(accounts);
 
-      let allPets = await factory.methods.getDeployedPets().call();
-      setPets(allPets);
+      let allDeployedPets = await factory.methods.getDeployedPets().call();
+      console.log(allDeployedPets);
 
       setLoggedIn(true);
     } catch (err) {
@@ -42,8 +64,22 @@ export default function App() {
     }
   };
 
-  const createPet = (ownerName, name, isMale) => {
-    console.log("created");
+  const createPet = async (ownerName, name, isMale, lastTimeFed) => {
+    console.log(ownerName, name, isMale, lastTimeFed);
+
+    try {
+      await factory.methods
+        .createPet(ownerName, name, isMale, lastTimeFed)
+        .send({
+          from: accounts[0],
+        });
+
+      let allDeployedPets = await factory.methods.getDeployedPets().call();
+      console.log(allDeployedPets);
+      console.log(allDeployedPets);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -56,14 +92,6 @@ export default function App() {
         createPet={createPet}
         setErrorMessage={setErrorMessage}
       />
-      {false && (
-        <Message
-          error
-          header="Oops!"
-          content={true && "Dein Mudda hat aufgehört zu treten - Strom weg"}
-          className={styles.error}
-        />
-      )}
     </div>
   );
 }

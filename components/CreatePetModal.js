@@ -18,25 +18,31 @@ const options = [
   { key: "f", text: "Female", value: false },
 ];
 
-export default function CreatePetModal({ open, setOpen, createPet, setErrorMessage }) {
+export default function CreatePetModal({
+  open,
+  setOpen,
+  createPet,
+  setErrorMessage,
+}) {
   const [isMale, setIsMale] = useState(true);
 
-  const createPetFromForm = (event) => {
+  const createPetFromForm = async (event) => {
     console.log(isMale);
     console.log(event.target[0].value);
     console.log(event.target[1].value);
     try {
-
-      createPet(
+      await createPet(
         event.target[0].value,
         event.target[1].value,
         isMale,
         new Date().getTime()
-        );
-        setOpen(false);
-      }catch(err) {
-        setErrorMessage('An error occured when trying to create a pet. Please check your inputs!');
-      }
+      );
+      setOpen(false);
+    } catch (err) {
+      setErrorMessage(
+        "An error occured when trying to create a pet. Please check your inputs!"
+      );
+    }
   };
 
   return (

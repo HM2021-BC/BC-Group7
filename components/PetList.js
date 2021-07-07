@@ -6,11 +6,6 @@ import Tamacoinchi from "./Tamacoinchi";
 import styles from "./styles/PetList.module.css";
 
 export default function PetList({ pets }) {
-  useEffect(() => {
-    console.log("PetList: ");
-    console.log(pets);
-  }, [pets]);
-
   const revive = () => {};
 
   const checkLifeStatus = (pet) => {

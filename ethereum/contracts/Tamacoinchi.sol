@@ -80,4 +80,21 @@ contract Tamacoinchi {
         // Pay the creator of the conract, which is us (that's how we earn money)
         creatorOfThisContract.transfer(msg.value);
     }
+
+    /**
+     * @dev get summary information about pet
+     */
+    function getSummaryOfYourPet()
+        public
+        view
+        returns (
+            address,
+            string memory,
+            string memory,
+            bool,
+            uint256
+        )
+    {
+        return (owner, ownerName, name, isMale, lastTimeFed);
+    }
 }
