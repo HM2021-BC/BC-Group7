@@ -19,7 +19,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    setPets(initialState.pets);
+    setPets(initialState.petList);
   }, []);
 
   const login = async (setIsLoading) => {
