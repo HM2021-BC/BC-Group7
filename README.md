@@ -19,7 +19,7 @@ Enjoy!
 
 ## Installation / Usage
 
-Tamacoinchi is using the same technologies as our sample projects in the blockchain course, therefore the usage is the same.
+Tamacoinchi is using the same technologies as our sample projects in the blockchain course, therefore the usage is the same. Following the steps included in the first labs will work fine.
 
 1. Change truffle.js constants to your own values (e.g. private key)
 2. migrate to private network with `migrate all --network private_poa`
