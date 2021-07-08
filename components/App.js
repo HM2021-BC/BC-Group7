@@ -40,8 +40,6 @@ function App() {
   };
 
   const createPet = async (ownerName, name, isMale, lastTimeFed) => {
-    console.log(ownerName, name, isMale, lastTimeFed);
-
     try {
       await factory.methods
         .createPet(ownerName, name, isMale, lastTimeFed)
@@ -85,7 +83,6 @@ function App() {
 
     const filteredPetList = [...newPetList];
     filteredPetList.filter((item) => item.ownerAddress != account);
-    // filteredPetList.shift();
     setPets(filteredPetList);
 
     newPetList.map((item) => {
@@ -99,12 +96,10 @@ function App() {
     try {
       const tamacoinchi = Tamacoinchi(myPet.address);
       const time = new Date().getTime();
-      console.log(web3.utils.toWei("0.2", "ether"));
       await tamacoinchi.methods.feed(time).send({
         from: currentAccount[0],
         value: web3.utils.toWei("10000000000000000", "ether"),
       });
-      console.log("done");
       await getAllPets(currentAccount);
     } catch (err) {
       console.log(err);
@@ -119,7 +114,6 @@ function App() {
         from: currentAccount[0],
         value: web3.utils.toWei("200000000000000000", "ether"),
       });
-      console.log("done");
       await getAllPets(currentAccount);
     } catch (err) {
       console.log(err);

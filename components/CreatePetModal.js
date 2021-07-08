@@ -18,7 +18,6 @@ function CreatePetModal({ open, setOpen, createPet }) {
   const createPetFromForm = async (event) => {
     setIsLoading(true);
     try {
-      console.log(event.target[0].value === "", event.target[1].value === "");
       if (event.target[0].value === "" || event.target[1].value === "")
         throw new Error("incorrect inputs");
 
